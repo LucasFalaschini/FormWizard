@@ -1,0 +1,345 @@
+<!-- 
+
+
+<body>
+
+  <div class="container">
+    <header>Formulario</header>
+
+    <div class="progress-bar">
+
+      <div class="step">
+        <p>Datos</p>
+        <div class="bullet"><span>1</span></div>
+        <div class="check fas fa-check"></div>
+      </div>
+
+      <div class="step"> 
+        <p>Vehículo</p>
+        <div class="bullet"><span>2</span></div>
+        <div class="check fas fa-check"></div>
+      </div>
+
+      <div class="step">
+        <p>Coberturas</p>
+        <div class="bullet"><span>3</span></div>
+        <div class="check fas fa-check"></div>
+      </div>
+
+      <div class="step">
+        <p>Resumen</p>
+        <div class="bullet"><span>4</span></div>
+        <div class="check fas fa-check"></div>
+      </div>
+
+    </div>
+
+
+
+    <div class="form-outer">
+
+        <form 
+        autocomplete="off"
+        [formGroup]="registerForm"
+        (ngSubmit)="crearUsuarioTemp()">
+
+          <div class="page slide-page">
+
+            <div class="title">Datos personales:</div>
+
+            <div class="field">
+              <input  type="text" 
+                      formControlName="dni"
+                      placeholder="DNI">
+            </div>
+
+            <div class="field">
+              <input  type="text" 
+                      formControlName="apellido"
+                      placeholder="Apellido">
+            </div>
+
+            <div class="field">
+              <input  type="text"
+                      formControlName="nombre"
+                      placeholder="Nombre">
+            </div>
+
+            <div class="field">
+              <input  type="email"
+                      formControlName="email"
+                      placeholder="Email">
+            </div>
+
+            <div class="field">
+              <input  type="text"
+                      formControlName="celular"
+                      placeholder="Celular">
+            </div>
+
+            <div class="field">
+              <input  type="text" 
+                      formControlName="telefono"
+                      placeholder="Teléfono">
+            </div>
+
+            <div class="field">
+              <input  type="text" 
+                      formControlName="ubicacion"
+                      placeholder="Ubicación">
+            </div>
+
+            <div class="field">
+              <input  type="date"
+                      formControlName="nacimiento"
+                      placeholder="Fecha de nacimiento">
+            </div>
+
+            <div class="field">
+              <input  type="text" 
+                      formControlName="usuario"
+                      placeholder="Usuario">
+            </div>
+
+            <div class="field">
+              <input  type="password" 
+                      formControlName="password"
+                      placeholder="Contraseña">
+            </div>
+
+            <div class="field">
+              <button type="submit" class="firstNext next" >Siguienteeee</button>
+            </div>
+
+          </div>
+
+
+
+          <div class="page">
+
+            <div class="title">Datos de su vehículo</div>
+
+            <div class="field">
+              <input type="text" placeholder="Marca">
+            </div>
+
+            <div class="field">
+              <input type="date" placeholder="Año">
+            </div>
+
+            <div class="field">
+              <input type="text" placeholder="Modelo">
+            </div>
+
+            <div class="field">
+              <input type="text" placeholder="Versión">
+            </div>
+
+            <div class="field btns">
+              <button class="prev-1 prev">Atras</button>
+              <button class="next-1 next">Siguiente</button>
+            </div>
+
+          </div>
+
+
+
+          <div class="page">
+
+            <div class="title">Date of Birth:</div>
+            <div class="field">
+              <div class="label">Date</div>
+              <input type="text">
+            </div>
+
+            <div class="field">
+              <div class="label">Gender</div>
+              <select>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="field btns">
+              <button class="prev-2 prev">Previous</button>
+              <button class="next-2 next">Next</button>
+            </div>
+
+          </div>
+
+
+          <div class="page">
+
+            <div class="title">Login Details:</div>
+            <div class="field">
+              <div class="label">Username</div>
+              <input type="text">
+            </div>
+
+            <div class="field">
+              <div class="label">Password</div>
+              <input type="password">
+            </div>
+
+            <div class="field btns">
+              <button class="prev-3 prev">Previous</button>
+              <button class="submit">Submit</button>
+            </div>
+
+          </div>
+
+
+        </form>
+    </div>
+
+  </div>
+</body>
+ -->
+
+
+
+
+
+
+
+
+
+ <!-- <button mat-raised-button (click)="isLinear = true" id="toggle-linear">Enable linear mode</button> -->
+
+<mat-horizontal-stepper [linear]="isLinear" #stepper="matHorizontalStepper">
+  <mat-step [stepControl]="firstFormGroup">
+    <form [formGroup]="firstFormGroup" (ngSubmit)="crearUsuarioTemp()">
+      <ng-template matStepLabel>Datos Personales</ng-template>
+      <mat-form-field>
+        <input matInput placeholder="DNI" formControlName="dni" required>
+      </mat-form-field>
+
+      <br>
+
+      <mat-form-field>
+        <input matInput placeholder="Apellido" formControlName="apellido" required>
+      </mat-form-field>
+
+      <br>
+
+      <mat-form-field>
+        <input matInput placeholder="Nombre" formControlName="nombre" required>
+      </mat-form-field>
+
+      <br>
+
+      <mat-form-field>
+        <input matInput placeholder="email" formControlName="email" required>
+      </mat-form-field>
+
+      <br>
+
+      <mat-form-field>
+        <input matInput placeholder="celular" formControlName="celular" required>
+      </mat-form-field>
+
+      <br>
+
+      <mat-form-field>
+        <input matInput placeholder="telefono" formControlName="telefono" required>
+      </mat-form-field>
+
+      <br>
+
+      <!-- TODO agregar input -->
+      <mat-form-field>
+        <mat-label>Ubicación</mat-label>
+        <select matNativeControl required>
+          <option *ngFor="let prov of provincias" type="Input"> {{prov["nombre"]}}</option>
+        </select>
+      </mat-form-field>
+
+
+
+      <br>
+
+      <mat-form-field>
+        <input matInput placeholder="nacimiento" formControlName="nacimiento" required>
+      </mat-form-field>
+
+      <br>
+
+      <mat-form-field>
+        <input matInput placeholder="usuario" formControlName="usuario" required>
+      </mat-form-field>
+
+      <br>
+
+      <mat-form-field>
+        <input matInput placeholder="password" formControlName="password" required>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+
+  <mat-step [stepControl]="secondFormGroup">
+    <form [formGroup]="secondFormGroup" (ngSubmit)="crearVehiculoTemp()">
+      <ng-template matStepLabel>Datos de su vehículo</ng-template>
+
+      <mat-form-field>
+        <mat-label>Marcas</mat-label>
+        <select matNativeControl required>
+          <option *ngFor="let marca of marcas"> {{marca["desc"]}}</option>
+        </select>
+      </mat-form-field>
+
+      <br>
+
+      <mat-form-field>
+        <input matInput placeholder="año" formControlName="año" required type="year">
+      </mat-form-field>
+
+      <br>
+
+      <mat-form-field>
+        <input matInput placeholder="modelo" formControlName="modelo" required>
+      </mat-form-field>
+
+      <br>
+
+      <mat-form-field>
+        <input matInput placeholder="version" formControlName="version" required>
+      </mat-form-field>
+
+
+      <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button mat-button matStepperNext>Next</button>
+      </div>
+    </form>
+  </mat-step>
+
+
+  <mat-step [stepControl]="thirdFormGroup" >
+    <form [formGroup]="thirdFormGroup">
+      <ng-template matStepLabel>Coberturas</ng-template>
+      <mat-form-field>
+        <mat-label>Coberturas</mat-label>
+        <select matNativeControl required>
+          <!-- TODO Ordenado por costo -->
+          <option *ngFor="let cobertura of coberturas" > {{cobertura["texto"]}}</option>
+        </select>
+      </mat-form-field>
+    </form>
+  </mat-step>
+
+
+  <mat-step>
+    <ng-template matStepLabel>Done</ng-template>
+    You are now done.
+    <div>
+      <button mat-button matStepperPrevious>Back</button>
+      <!-- <button mat-button (click)="stepper.reset()">Reset</button> -->
+      <button mat-button type="submit">Submit</button>
+    </div>
+  </mat-step>
+</mat-horizontal-stepper>
