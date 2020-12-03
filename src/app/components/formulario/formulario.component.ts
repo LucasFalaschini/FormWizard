@@ -1,7 +1,11 @@
+import { Usuario } from './../../interfaces/usuario';
 
 import { Component, OnInit, Output } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup, NgForm } from '@angular/forms';
 import { ApiService } from '../../services/api-service';
+import { UsuarioModel } from '../../models/usuario.model';
+
+import Swal from 'sweetalert2';
 
 
 
@@ -12,11 +16,13 @@ import { ApiService } from '../../services/api-service';
 })
 export class FormularioComponent implements OnInit {
 
-  // @Output() valorSalida: EventEmitter<string> = new EventEmitter();
+
+  usuario: UsuarioModel = new UsuarioModel();
 
   marcas = [];
   provincias: any[] = [];
   coberturas = [];
+
 
   isLinear = false;
   firstFormGroup: FormGroup;
@@ -78,6 +84,7 @@ export class FormularioComponent implements OnInit {
     this.apiService.getGeo()
         .subscribe(resp => {
           this.provincias = resp.provincias;
+
           console.log('Provincias:', this.provincias);
         });
 
@@ -95,12 +102,45 @@ export class FormularioComponent implements OnInit {
 
 
    crearUsuarioTemp() {
-     console.log(this.firstFormGroup.value);
+     console.log('Usuario Temporal: ', this.firstFormGroup.value);
+     console.log(this.firstFormGroup.value.apellido);
+     this.usuario.dni = this.firstFormGroup.value.dni;
+     this.usuario.apellido = this.firstFormGroup.value.apellido;
+     this.usuario.nombre = this.firstFormGroup.value.nombre;
+     this.usuario.email = this.firstFormGroup.value.email;
+     this.usuario.celular = this.firstFormGroup.value.celular;
+     this.usuario.telefono = this.firstFormGroup.value.telefono;
+     this.usuario.ubicacion = this.firstFormGroup.value.ubicacion;
+     this.usuario.nacimiento = this.firstFormGroup.value.nacimiento;
+     this.usuario.Usuario = this.firstFormGroup.value.usuario;
+     this.usuario.password = this.firstFormGroup.value.password;
+
    }
 
    crearVehiculoTemp() {
     console.log(this.secondFormGroup.value);
    }
+
+
+
+
+   enviarAlert(form?: NgForm){
+    Swal.fire({
+      title: '¿Desea guardar los datos ingresados?',
+      icon: 'question',
+      showDenyButton: true,
+      // showCancelButton: true,
+      showCloseButton: true,
+      confirmButtonText: `Guardar`,
+      denyButtonText: `No guardar`,
+    }).then((result) => {
+    if (result.isConfirmed) {
+      Swal.fire('¡Información enviada!', '', 'success')
+    } else if (result.isDenied) {
+      Swal.fire('Los cambios no se guardaron', '', 'info')
+    }
+    })
+  }
 
 
 
